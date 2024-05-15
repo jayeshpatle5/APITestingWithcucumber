@@ -1,0 +1,6 @@
+{
+  "query":{
+  "query": "{\n  users(limit: 10) {\n    name\n    id\n  }\n}\n",
+  "variables": null
+  }
+}

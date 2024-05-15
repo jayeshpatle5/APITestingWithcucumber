@@ -4,22 +4,13 @@ Feature: To create Query Request With GraphQL
   
 
   @tag1
-  Scenario: To get Query Data for user
-    Given 
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
-
-  @tag2
-  Scenario Outline: Title of your scenario outline
-    Given I want to write a step with <name>
-    When I check for the <value> in step
-    Then I verify the <status> in step
-
+  Scenario Outline:
+: To get Query Data for user
+    Given user has to access the endpoint url "/learn/graphql"
+    When user creates a queryrequest using data "<dataKey>" from JSON file "<JSONFile>" 
+    Then user should get the response code 200
+    
     Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
-      | name2 |     7 | Fail    |
+      | dataKey        | JSONFile         |
+      | query          | queryRequest.json |
+      

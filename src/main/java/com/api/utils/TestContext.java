@@ -28,4 +28,17 @@ public class TestContext {
 				.contentType(CONTENT_TYPE)
 				.accept(CONTENT_TYPE);
 	} 
+	
+	public RequestSpecification requestSetup1() {	
+		RestAssured.reset();
+		Options options = Options.builder().logStacktrace().build();
+		RestAssuredConfig config = CurlRestAssuredConfigFactory.createConfig(options); 
+		RestAssured.baseURI = PropertiesFile.getProperty("baseURL");	
+		return RestAssured.given()
+				.config(config)
+				.filter(new RestAssuredRequestFilter())				
+				.contentType(CONTENT_TYPE).header("Authorization", PropertiesFile.getProperty("token"))
+				.accept(CONTENT_TYPE);
+	} 
+	
 }
